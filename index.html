@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin=""/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+     integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+     crossorigin=""></script>
+    <title>Leaflet</title>
+    
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+    <style> #map { position: absolute; top:0; bottom: 0; left:0; right: 0;}</style>
+</head>
+<body>
+    <div id="map"></div>
+    <script>
+//         var map = L.map('map').setView([0, 0], 2);
+// L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+//   attribution: '&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
+// }).addTo(map);
+// L.Control.geocoder().addTo(map);
+var map = L.map('map').setView([51.505, -0.09], 13);
+
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+         maxZoom: 15,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+         }).addTo(map);
+
+         var geocoder = L.Control.geocoder({
+  defaultMarkGeocode: false
+})
+  .on('markgeocode', function(e) {
+    var bbox = e.geocode.bbox;
+    var poly = L.polygon([
+      bbox.getSouthEast(),
+      bbox.getNorthEast(),
+      bbox.getNorthWest(),
+      bbox.getSouthWest()
+    ]).addTo(map);
+    map.fitBounds(poly.getBounds());
+  })
+  .addTo(map);
+
+     var marker = L.marker([-8.3304, 115.0905]).addTo(map);
+
+         var circle = L.circle([29.9756, -90.0784], {
+         color: 'red',
+         fillColor: '#f03',
+         fillOpacity: 0.5,
+         radius: 500
+     }).addTo(map);
+
+     var circle = L.circle([52.2017, -9.6323], {
+         color: 'red',
+         fillColor: '#f03',
+         fillOpacity: 0.5,
+         radius: 500
+     }).addTo(map);
+
+     var marker = L.marker([11.9477338, 121.9392632]).addTo(map);
+
+         var circle = L.circle([4.1783, 73.5109], {
+         color: 'red',
+         fillColor: '#f03',
+         fillOpacity: 0.5,
+         radius: 500
+     }).addTo(map);
+
+     var circle = L.circle([31.6247, -7.9895], {
+         color: 'red',
+         fillColor: '#f03',
+         fillOpacity: 0.5,
+         radius: 500
+     }).addTo(map);
+    
+     var circle = L.circle([-33.8704, 151.2069], {
+         color: 'red',
+         fillColor: '#f03',
+         fillOpacity: 0.5,
+         radius: 500
+     }).addTo(map);
+
+     var marker = L.marker([48.8535, 2.3484]).addTo(map);
+
+     var circle = L.circle([-33.9303, 18.4158], {
+         color: 'red',
+         fillColor: '#f03',
+         fillOpacity: 0.5,
+         radius: 500
+     }).addTo(map);
+     
+     var marker = L.marker([25.2646, 55.2928]).addTo(map);
+
+    </script>
+</body>
+
+</html>
